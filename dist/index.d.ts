@@ -1,0 +1,1 @@
+export { makeModule } from './services';

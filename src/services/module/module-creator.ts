@@ -1,8 +1,4 @@
 const fs = require('fs')
-const config = {
-  basePath: `${__dirname}\\src`,
-  modulesPath: `${__dirname}\\src\\modules`,
-}
 
 const MODULE_STUB = fs.readFileSync(`${__dirname}\\stubs\\module.stub`, 'utf8')
 const MODULE_WITH_ROUTE_STUB = fs.readFileSync(
@@ -61,9 +57,14 @@ const createFileModule = (filePath: string, stub: string) => {
   console.log('Module file: ' + filePath)
 }
 
-export function makeModule(name: string, withRoutes = false, withViews = false) {
+export function makeModule(
+  appBasePath: string,
+  name: string,
+  withRoutes = false,
+  withViews = false,
+) {
   const moduleName = `${name}Module`.replace('ModuleModule', 'Module')
-  const modulePath = `${config.modulesPath}\\${moduleName}`
+  const modulePath = `${appBasePath}\\src\\modules\\${moduleName}`
   const filePath = `${modulePath}\\${moduleName}.tsx`
   const stub = getModuleStub(moduleName, withRoutes)
 

@@ -57,12 +57,7 @@ const createFileModule = (filePath: string, stub: string) => {
   console.log('Module file: ' + filePath)
 }
 
-export function makeModule(
-  appBasePath: string,
-  name: string,
-  withRoutes = false,
-  withViews = false,
-) {
+export function create(appBasePath: string, name: string, withRoutes = false, withViews = false) {
   const moduleName = `${name}Module`.replace('ModuleModule', 'Module')
   const modulePath = `${appBasePath}\\src\\modules\\${moduleName}`
   const filePath = `${modulePath}\\${moduleName}.tsx`

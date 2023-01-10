@@ -1,1 +1,1 @@
-export * as Modules from './modules/create'
+export * as Modules from './modules'

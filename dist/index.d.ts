@@ -1,1 +1,1 @@
-export { makeModule } from './services';
+export * from './services';

@@ -23,5 +23,27 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Modules = void 0;
-exports.Modules = __importStar(require("./modules"));
+exports.generateTree = void 0;
+const fs = __importStar(require("fs"));
+function generateTree(path, depth = 0, maxDepth = 2) {
+    const tree = [];
+    if (depth > maxDepth) {
+        return [];
+    }
+    const entries = fs.readdirSync(path, { withFileTypes: true });
+    for (const entry of entries) {
+        const name = entry.name;
+        if (entry.isDirectory()) {
+            const node = {
+                name,
+                children: generateTree(`${path}/${name}`, depth + 1, maxDepth),
+            };
+            tree.push(node);
+        }
+        else {
+            tree.push({ name });
+        }
+    }
+    return tree;
+}
+exports.generateTree = generateTree;

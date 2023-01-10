@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import { Dirent } from 'fs'
 import { basename } from 'path'
 
-interface TreeNode {
+export interface TreeNode {
   name: string
   children?: TreeNode[]
 }

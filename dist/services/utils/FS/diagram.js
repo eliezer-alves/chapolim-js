@@ -23,5 +23,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Modules = void 0;
-exports.Modules = __importStar(require("./modules"));
+exports.generateDiagram = void 0;
+const fs = __importStar(require("fs"));
+const path_1 = require("path");
+function generateDiagram(path, depth = 0, maxDepth = 2) {
+    let diagram = '';
+    if (depth > maxDepth) {
+        return '';
+    }
+    if (depth === 0) {
+        diagram += `📂 ${(0, path_1.basename)(path)}\n`;
+        depth += 1;
+    }
+    const entries = fs.readdirSync(path, { withFileTypes: true });
+    for (const entry of entries) {
+        const name = entry.name;
+        if (entry.isDirectory()) {
+            diagram += `${'  '.repeat(depth)}📂 ${name}\n`;
+            diagram += generateDiagram(`${path}/${name}`, depth + 1, maxDepth);
+        }
+        else {
+            const ext = name.split('.').pop();
+            diagram += `${'  '.repeat(depth)}📄 ${name}\n`;
+        }
+    }
+    return diagram;
+}
+exports.generateDiagram = generateDiagram;

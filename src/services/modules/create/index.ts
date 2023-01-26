@@ -1,11 +1,11 @@
 const fs = require('fs')
 
-const MODULE_STUB = fs.readFileSync(`${__dirname}\\stubs\\module.stub`, 'utf8')
+const MODULE_STUB = fs.readFileSync(`${__dirname}/stubs/module.stub`, 'utf8')
 const MODULE_WITH_ROUTE_STUB = fs.readFileSync(
-  `${__dirname}\\stubs\\module-with-route.stub`,
+  `${__dirname}/stubs/module-with-route.stub`,
   'utf8',
 )
-const ROUTE_STUB = fs.readFileSync(`${__dirname}\\stubs\\route.stub`, 'utf8')
+const ROUTE_STUB = fs.readFileSync(`${__dirname}/stubs/route.stub`, 'utf8')
 
 function makeRouteFileName(moduleName: string) {
   return `${moduleName}Router`.replace('ModuleRouter', 'Router')
@@ -32,8 +32,8 @@ const getRouteStub = (moduleName: string) => {
 
 const makeRoutes = (moduleName: string, modulePath: string) => {
   const routeFileName = makeRouteFileName(moduleName)
-  const routerPath = `${modulePath}\\router`
-  const routerFilePath = `${routerPath}\\${routeFileName}.tsx`
+  const routerPath = `${modulePath}/router`
+  const routerFilePath = `${routerPath}/${routeFileName}.tsx`
   const stub = getRouteStub(moduleName)
 
   if (!fs.existsSync(routerPath)) {
@@ -59,8 +59,8 @@ const createFileModule = (filePath: string, stub: string) => {
 
 export function create(appBasePath: string, name: string, withRoutes = false, withViews = false) {
   const moduleName = `${name}Module`.replace('ModuleModule', 'Module')
-  const modulePath = `${appBasePath}\\src\\modules\\${moduleName}`
-  const filePath = `${modulePath}\\${moduleName}.tsx`
+  const modulePath = `${appBasePath}/src/modules/${moduleName}`
+  const filePath = `${modulePath}/${moduleName}.tsx`
   const stub = getModuleStub(moduleName, withRoutes)
 
   if (fs.existsSync(modulePath)) {

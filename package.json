@@ -1,6 +1,6 @@
 {
   "name": "@eliezeralves/chapolim-js",
-  "version": "0.0.3",
+  "version": "0.0.9",
   "description": "a package to work for me",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -37,5 +37,8 @@
     "chapolim",
     "react",
     "modules"
+  ],
+  "files": [
+    "dist"
   ]
 }

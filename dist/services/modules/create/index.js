@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.create = void 0;
 const fs = require('fs');
-const MODULE_STUB = fs.readFileSync(`${__dirname}\\stubs\\module.stub`, 'utf8');
-const MODULE_WITH_ROUTE_STUB = fs.readFileSync(`${__dirname}\\stubs\\module-with-route.stub`, 'utf8');
-const ROUTE_STUB = fs.readFileSync(`${__dirname}\\stubs\\route.stub`, 'utf8');
+const MODULE_STUB = fs.readFileSync(`${__dirname}/stubs/module.stub`, 'utf8');
+const MODULE_WITH_ROUTE_STUB = fs.readFileSync(`${__dirname}/stubs/module-with-route.stub`, 'utf8');
+const ROUTE_STUB = fs.readFileSync(`${__dirname}/stubs/route.stub`, 'utf8');
 function makeRouteFileName(moduleName) {
     return `${moduleName}Router`.replace('ModuleRouter', 'Router');
 }
@@ -21,8 +21,8 @@ const getRouteStub = (moduleName) => {
 };
 const makeRoutes = (moduleName, modulePath) => {
     const routeFileName = makeRouteFileName(moduleName);
-    const routerPath = `${modulePath}\\router`;
-    const routerFilePath = `${routerPath}\\${routeFileName}.tsx`;
+    const routerPath = `${modulePath}/router`;
+    const routerFilePath = `${routerPath}/${routeFileName}.tsx`;
     const stub = getRouteStub(moduleName);
     if (!fs.existsSync(routerPath)) {
         fs.mkdirSync(routerPath);
@@ -42,8 +42,8 @@ const createFileModule = (filePath, stub) => {
 };
 function create(appBasePath, name, withRoutes = false, withViews = false) {
     const moduleName = `${name}Module`.replace('ModuleModule', 'Module');
-    const modulePath = `${appBasePath}\\src\\modules\\${moduleName}`;
-    const filePath = `${modulePath}\\${moduleName}.tsx`;
+    const modulePath = `${appBasePath}/src/modules/${moduleName}`;
+    const filePath = `${modulePath}/${moduleName}.tsx`;
     const stub = getModuleStub(moduleName, withRoutes);
     if (fs.existsSync(modulePath)) {
         console.log(`${modulePath} already exists`);

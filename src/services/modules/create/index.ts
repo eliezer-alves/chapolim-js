@@ -1,10 +1,9 @@
+import { Providers } from '../..'
+
 const fs = require('fs')
 
 const MODULE_STUB = fs.readFileSync(`${__dirname}/stubs/module.stub`, 'utf8')
-const MODULE_WITH_ROUTE_STUB = fs.readFileSync(
-  `${__dirname}/stubs/module-with-route.stub`,
-  'utf8',
-)
+const MODULE_WITH_ROUTE_STUB = fs.readFileSync(`${__dirname}/stubs/module-with-route.stub`, 'utf8')
 const ROUTE_STUB = fs.readFileSync(`${__dirname}/stubs/route.stub`, 'utf8')
 
 function makeRouteFileName(moduleName: string) {
@@ -57,7 +56,13 @@ const createFileModule = (filePath: string, stub: string) => {
   console.log('Module file: ' + filePath)
 }
 
-export function create(appBasePath: string, name: string, withRoutes = false, withViews = false) {
+export function create(
+  appBasePath: string,
+  name: string,
+  withRoutes = false,
+  withViews = false,
+  whithProviders = false,
+) {
   const moduleName = `${name}Module`.replace('ModuleModule', 'Module')
   const modulePath = `${appBasePath}/src/modules/${moduleName}`
   const filePath = `${modulePath}/${moduleName}.tsx`
@@ -72,6 +77,8 @@ export function create(appBasePath: string, name: string, withRoutes = false, wi
 
   if (withViews) createViewsFolder(modulePath)
   if (withRoutes) makeRoutes(moduleName, modulePath)
+  if (whithProviders)
+    Providers.create(appBasePath, moduleName, moduleName.replace('Module', ''), true)
 
   createFileModule(filePath, stub)
 

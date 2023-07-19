@@ -1,3 +1,5 @@
+import { Hooks } from '../..'
+
 const fs = require('fs')
 
 const PROVIDER_STUB = fs.readFileSync(`${__dirname}/stubs/provider.stub`, 'utf8')
@@ -31,7 +33,13 @@ const createIndexProvider = (modulePath: string, name: string) => {
   return createFile(filePath, stub)
 }
 
-export function create(appBasePath: string, moduleName: string, name: string, createIndex = false) {
+export function create(
+  appBasePath: string,
+  moduleName: string,
+  name: string,
+  createHook = false,
+  createIndex = false,
+) {
   moduleName = `${moduleName}Module`.replace('ModuleModule', 'Module')
   const mutatedName = `${name}Provider`.replace('ProviderProvider', 'Provider')
   const modulePath = `${appBasePath}/src/modules/${moduleName}`
@@ -49,6 +57,10 @@ export function create(appBasePath: string, moduleName: string, name: string, cr
 
   if (createIndex) {
     createIndexProvider(modulePath, mutatedName)
+  }
+
+  if (createHook) {
+    Hooks.createUseContext(appBasePath, moduleName, name)
   }
 
   return 0

@@ -33,4 +33,12 @@ program
     console.log(chapolim.Modules.showDiagram(__dirname, name))
   })
 
+program
+  .command('delete:module')
+  .description('delete a module')
+  .argument('<name>', 'module name')
+  .action(name => {
+    chapolim.Modules.remove(__dirname, name)
+  })
+
 program.parse()

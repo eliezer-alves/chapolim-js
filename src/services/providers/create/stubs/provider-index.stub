@@ -1,0 +1,11 @@
+import { $name } from './$name/$name';
+
+const $names: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => (
+  <$name>
+    {children}
+  </$name>
+);
+
+export default $names;

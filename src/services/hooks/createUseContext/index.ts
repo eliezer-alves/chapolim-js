@@ -1,4 +1,4 @@
-import { StringUtil } from '../../utils'
+import { StringUtil } from '../../../utils'
 
 const fs = require('fs')
 

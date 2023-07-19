@@ -1,0 +1,19 @@
+import React, { createContext, useMemo, } from 'react';
+
+type T$nameContext = {};
+
+export const $nameContext = createContext({} as T$nameContext);
+
+type $nameProviderProps = {
+  children: React.ReactNode;
+};
+
+export const $nameProvider: React.FC<$nameProviderProps> = ({
+  children,
+}) => {
+  const value = useMemo<T$nameContext>(() => ({}), []);
+
+  return (
+    <$nameContext.Provider value={value}>{children}</$nameContext.Provider>
+  );
+};

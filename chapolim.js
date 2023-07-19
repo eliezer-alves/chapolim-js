@@ -52,4 +52,13 @@ program
     chapolim.Providers.create(__dirname, options.module, name, options.hook)
   })
 
+program
+  .command('make:useContext')
+  .description('creates a new custom hook to use the specified context')
+  .argument('<name>', 'context name')
+  .requiredOption('-m, --module <name>', 'module where the hook will be created')
+  .action((name, options) => {
+    chapolim.Hooks.createUseContext(__dirname, options.module, name)
+  })
+
 program.parse()

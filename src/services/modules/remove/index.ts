@@ -12,6 +12,12 @@ const getCurrentFilenames = (path: string) => {
 export function remove(appBasePath: string, name: string) {
   const moduleName = `${name}Module`.replace('ModuleModule', 'Module')
   const modulePath = `${appBasePath}/src/modules/${moduleName}`
+
+  if (!fs.existsSync(modulePath)) {
+    console.log(`${modulePath}: module not found`)
+    return
+  }
+
   const message = getCurrentFilenames(modulePath)
   fs.rm(
     modulePath,

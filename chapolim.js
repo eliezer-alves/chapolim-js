@@ -41,4 +41,13 @@ program
     chapolim.Modules.remove(__dirname, name)
   })
 
+program
+  .command('make:provider')
+  .description('creates a new provider in the specified module')
+  .argument('<name>', 'provider name')
+  .requiredOption('-m, --module <name>', 'module where the provider will be created')
+  .action((name, options) => {
+    chapolim.Providers.create(__dirname, options.module, name)
+  })
+
 program.parse()

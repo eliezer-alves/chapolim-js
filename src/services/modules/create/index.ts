@@ -78,7 +78,7 @@ export function create(
   if (withViews) createViewsFolder(modulePath)
   if (withRoutes) makeRoutes(moduleName, modulePath)
   if (whithProviders)
-    Providers.create(appBasePath, moduleName, moduleName.replace('Module', ''), true)
+    Providers.create(appBasePath, moduleName, moduleName.replace('Module', ''), true, true)
 
   createFileModule(filePath, stub)
 

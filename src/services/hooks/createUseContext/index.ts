@@ -19,7 +19,7 @@ const createFile = (filePath: string, stub: string) => {
 
 const publishInIndex = (modulePath: string, mutatedName: string) => {
   const filePath = `${modulePath}/hooks/index.tsx`
-  const content = `export * from './${mutatedName}/${mutatedName}';`
+  const content = `export * from './${mutatedName}/${mutatedName}';\n`
   if (!fs.existsSync(filePath)) {
     createFile(filePath, '')
   }

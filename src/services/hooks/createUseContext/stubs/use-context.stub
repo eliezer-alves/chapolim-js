@@ -1,0 +1,4 @@
+import { useContext } from 'react';
+import { $nameContext } from '../../providers/$nameProvider/$nameProvider';
+
+export const use$name = () => useContext($nameContext);

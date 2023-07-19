@@ -13,8 +13,9 @@ program
   .argument('<name>', 'module name')
   .option('-r, --routes', 'create the module with a routes file')
   .option('-v, --views', 'creates the module with an example view')
+  .option('-p, --providers', 'creates the module with an example provider')
   .action((name, options) => {
-    chapolim.Modules.create(__dirname, name, options.routes, options.views)
+    chapolim.Modules.create(__dirname, name, options.routes, options.views, options.providers)
   })
 
 program

@@ -47,8 +47,9 @@ program
   .description('creates a new provider in the specified module')
   .argument('<name>', 'provider name')
   .requiredOption('-m, --module <name>', 'module where the provider will be created')
+  .option('-u, --hook', 'create custom hook for using provider context')
   .action((name, options) => {
-    chapolim.Providers.create(__dirname, options.module, name)
+    chapolim.Providers.create(__dirname, options.module, name, options.hook)
   })
 
 program.parse()

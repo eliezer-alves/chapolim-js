@@ -19,7 +19,7 @@ function createProviderFolder(folderPath: string) {
 
 const createFile = (filePath: string, stub: string) => {
   fs.writeFileSync(filePath, stub)
-  console.log('Provider file: ' + filePath)
+  console.log('created file: ' + filePath)
 }
 
 const createIndexProvider = (modulePath: string, name: string) => {

@@ -53,7 +53,7 @@ function createViewsFolder(modulePath: string) {
 
 const createFileModule = (filePath: string, stub: string) => {
   fs.writeFileSync(filePath, stub)
-  console.log('Module file: ' + filePath)
+  console.log('created file: ' + filePath)
 }
 
 export function create(

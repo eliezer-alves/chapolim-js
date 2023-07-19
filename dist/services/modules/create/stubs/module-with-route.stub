@@ -1,5 +1,0 @@
-import { $RouteFile } from './router/$RouteFile';
-
-const $moduleName = () => (<$RouteFile />);
-
-export default $moduleName;

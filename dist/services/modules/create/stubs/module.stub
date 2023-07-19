@@ -1,3 +1,0 @@
-const $moduleName = () => (<>$moduleName</>);
-
-export default $moduleName;
